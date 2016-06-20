@@ -13,7 +13,7 @@ public class TravelsAccount {
 
 
     public final String userName;
-    public final String password;
+    public final String userPassword;
     public final String travels_url;
 
 
@@ -21,8 +21,9 @@ public class TravelsAccount {
     //constructor
     public TravelsAccount(){
         userName = System.getProperty(TRAVELS_USERNAME_KEY, "user@phptravels.com");
-        password = System.getProperty(TRAVELS_PASSWORD_KEY, "demouser");
-        travels_url = System.getProperty(TRAVELS_URL_KEY, "http://phptravels.net");
+        userPassword = System.getProperty(TRAVELS_PASSWORD_KEY, "demouser");
+        travels_url = System.getProperty(TRAVELS_URL_KEY, "http://www.phptravels.net");
+        System.out.println(travels_url);
 
 
     }
