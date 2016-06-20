@@ -39,15 +39,20 @@ public class LoginTest {
 
     @Before
     public void prepForTest(){
+
+        //domain object for travel account
         travelsAccount = new TravelsAccount();
+
+        //using extent reports to log and report on progress
+        report = new ExtentReports("target/extent-reports/TravelsTestReport.html", true);
+        logger = report.startTest("Start Login to Travels App test");
 
     }
 
     @Test
     public void loginToTravels(){
 
-        report = new ExtentReports("target/extent-reports/TravelsTestReport.html", true);
-        logger = report.startTest("Start Login to Travels App test");
+
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
 
