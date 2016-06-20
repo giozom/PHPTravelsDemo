@@ -1,6 +1,7 @@
 package com.giozom.travels.login;
 
 import com.giozom.travels.domain.TravelsAccount;
+import com.giozom.travels.pages.LoginPage;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.junit.*;

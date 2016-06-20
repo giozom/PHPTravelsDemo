@@ -1,6 +1,4 @@
-package com.giozom.travels.login;
-
-
+package com.giozom.travels.pages;
 
 
 import org.openqa.selenium.By;
