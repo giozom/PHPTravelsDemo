@@ -1,7 +1,7 @@
 package com.giozom.travels.login;
 
 import com.giozom.travels.domain.TravelsAccount;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,21 +16,42 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class LoginTest {
 
+    public static final String TRAVELS_LOGIN_ENDPOINT = "/login";
+    public static final String TRAVELS_LOGOUT_ENDPOINT = "/account/login";
+
+    public static WebDriver driver;
+    private TravelsAccount travelsAccount;
+
+
+    @BeforeClass
+    public static void startDriver(){
+        driver = new FirefoxDriver();
+    }
+
+    @Before
+    public void prepForTest(){
+        travelsAccount = new TravelsAccount();
+
+    }
+
     @Test
     public void loginToTravels() {
 
-        WebDriver driver = new FirefoxDriver();
+        final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
 
-        //domain object for Travels application
-        TravelsAccount travelsAccount = new TravelsAccount();
 
-        //using travels object to get the travels_url
-        driver.get(travelsAccount.travels_url +"/login");
+        //page locators
+        By username_text_field = By.name("username");
+        By password_text_field = By.name("password");
+        By login_button = By.xpath(".//*[@id='loginfrm']/div/div[5]/div/div/div[1]/button");
 
-        //get the web elements on the login page
-        WebElement txt_username = driver.findElement(By.name("username"));
-        WebElement txt_password = driver.findElement(By.name("password"));
-        WebElement loginButton = driver.findElement(By.xpath(".//*[@id='loginfrm']/div/div[5]/div/div/div[1]/button"));
+        //goto to login page
+        driver.get(TRAVELS_LOGIN);
+
+        //setup page controls
+        WebElement txt_username = driver.findElement(username_text_field);
+        WebElement txt_password = driver.findElement(password_text_field);
+        WebElement loginButton = driver.findElement(login_button);
 
         //login
         txt_username.sendKeys(travelsAccount.userName);
@@ -47,16 +68,20 @@ public class LoginTest {
         //verify title after login
         assertThat(driver.getTitle(), is("My Account"));
 
-        driver.get(travelsAccount.travels_url + "/account/logout");
+
+    }
+
+    @After
+    public void closeSession() {
+        //logout
+        driver.get(TRAVELS_LOGOUT_ENDPOINT);
+    }
+
+
+    @AfterClass
+    public static void quitDriver(){
+        //quit browser
         driver.quit();
-
-
-
-
-
-
-
-
     }
 
 
