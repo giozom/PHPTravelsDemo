@@ -1,29 +1,31 @@
 package com.giozom.travels.login;
 
 import com.giozom.travels.domain.TravelsAccount;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 
 
-/**
- * Created by garsenius on 20/06/2016.
- */
+
+
 public class LoginTest {
+
+    ExtentReports report;
+    ExtentTest logger;
 
     public static final String TRAVELS_LOGIN_ENDPOINT = "/login";
     public static final String TRAVELS_LOGOUT_ENDPOINT = "/account/logout";
 
     public static WebDriver driver;
+    public static WebDriverWait wait;
 
     private TravelsAccount travelsAccount;
 
@@ -43,28 +45,17 @@ public class LoginTest {
 
     @Test
     public void loginToTravels(){
+        report = new ExtentReports("/Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html");
+
+        logger = report.startTest("Verify login is successful");
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
-
-
-        //page locators
-        By username_text_field = By.name("username");
-        By password_text_field = By.name("password");
-        By login_button = By.xpath(".//*[@id='loginfrm']/div/div[5]/div/div/div[1]/button");
 
         //goto to login page
         driver.get(TRAVELS_LOGIN);
         System.out.println(TRAVELS_LOGIN);
+        logger.log(LogStatus.INFO, "Browser launched");
 
-        //setup page controls
-        WebElement txt_username = driver.findElement(username_text_field);
-        WebElement txt_password = driver.findElement(password_text_field);
-        WebElement loginButton = driver.findElement(login_button);
-
-        //login
-        txt_username.sendKeys(travelsAccount.userName);
-        txt_password.sendKeys(travelsAccount.userPassword);
-        loginButton.click();
 
         //wait for page to load
         try {
@@ -73,10 +64,27 @@ public class LoginTest {
             e.printStackTrace();
         }
 
+        //verify title before login
+        assertThat(driver.getTitle(), is("Login"));
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeUsername(travelsAccount.userName);
+        loginPage.typePassword(travelsAccount.userPassword);
+        loginPage.signIn();
+
+        logger.log(LogStatus.INFO, "Logged in successful");
+
+
+        wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.titleContains("My Account"));
 
         //verify title after login
         assertThat(driver.getTitle(), is("My Account"));
 
+        logger.log(LogStatus.PASS, "Title verified");
+        report.endTest(logger);
+        report.flush();
+        driver.get("/Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html");
 
     }
 
@@ -85,6 +93,7 @@ public class LoginTest {
         final String TRAVELS_LOGOUT = travelsAccount.travels_url + TRAVELS_LOGOUT_ENDPOINT;
         //click logout
         driver.get(TRAVELS_LOGOUT);
+        System.out.println(TRAVELS_LOGOUT);
     }
 
 
@@ -92,6 +101,7 @@ public class LoginTest {
     public static void quitDriver(){
         //quit browser
         driver.quit();
+
     }
 
 

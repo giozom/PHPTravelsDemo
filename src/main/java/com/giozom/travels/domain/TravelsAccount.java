@@ -1,9 +1,6 @@
 package com.giozom.travels.domain;
 
-/**
- * Created by garsenius on 20/06/2016.
- * Domain object for TravelsAccount
- */
+
 public class TravelsAccount {
 
 
