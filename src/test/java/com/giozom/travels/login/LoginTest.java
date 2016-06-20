@@ -5,7 +5,9 @@ import com.giozom.travels.pages.LoginPage;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.junit.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,14 +48,12 @@ public class LoginTest {
 
         //using extent reports to log and report on progress
         report = new ExtentReports("target/extent-reports/TravelsTestReport.html", true);
-        logger = report.startTest("Start Login to Travels App test");
+        logger = report.startTest("Test starting..");
 
     }
 
     @Test
     public void loginToTravels(){
-
-
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
 
@@ -72,23 +72,73 @@ public class LoginTest {
 
         //verify title before login
         assertThat(driver.getTitle(), is("Login"));
+        logger.log(LogStatus.INFO, "'Login' found in window title");
 
         LoginPage loginPage = new LoginPage(driver);
+
         loginPage.typeUsername(travelsAccount.userName);
+        logger.log(LogStatus.INFO, "Username entered");
+
         loginPage.typePassword(travelsAccount.userPassword);
+        logger.log(LogStatus.INFO, "Password entered");
+
         loginPage.signIn();
+        logger.log(LogStatus.INFO, "Login button clicked");
 
-        logger.log(LogStatus.INFO, "Logged in successful");
+        logger.log(LogStatus.INFO, "User successfully logged in");
 
-
+        //add a delay
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.titleContains("My Account"));
 
         //verify title after login
         assertThat(driver.getTitle(), is("My Account"));
 
-        logger.log(LogStatus.PASS, "Title verified");
+        logger.log(LogStatus.PASS, "'Successful Login Test Completed");
 
+    }
+
+    @Test
+    public void failToLoginToTravels(){
+
+        final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
+
+        //goto to login page
+        driver.get(TRAVELS_LOGIN);
+        System.out.println(TRAVELS_LOGIN);
+        logger.log(LogStatus.INFO, "Browser launched");
+
+        //wait for page to load
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //verify title before login
+        assertThat(driver.getTitle(), is("Login"));
+        logger.log(LogStatus.INFO, "'Login' found in window title");
+
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.typeUsername(travelsAccount.userName);
+        logger.log(LogStatus.INFO, "Username entered");
+
+        loginPage.typePassword("wagaya"); //incorrect password test
+        logger.log(LogStatus.INFO, "Password entered");
+
+        loginPage.signIn();
+        logger.log(LogStatus.INFO, "Login button clicked");
+
+        logger.log(LogStatus.INFO, "User failed to log in");
+
+        loginPage.loginUnsuccessfulMessageIsPresent();
+        logger.log(LogStatus.INFO, "Error message displayed successfully");
+
+        //verify title after failed login is still 'Login'
+        assertThat(driver.getTitle(), is("Login"));
+
+        logger.log(LogStatus.PASS, "'Failed Test Successfully completed");
     }
 
     @After
@@ -104,13 +154,12 @@ public class LoginTest {
     public static void quitDriver(){
         //quit browser
         driver.quit();
+
+        //endtest
         report.endTest(logger);
         report.flush();
         System.out.println(report);
 
-
     }
-
-
 
 }
