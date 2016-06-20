@@ -1,6 +1,5 @@
 package com.giozom.travels.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -47,25 +46,6 @@ public class LoginPage {
             return false;
         }
     }
-
-    /*
-    public static boolean loginUnsuccessfulMessageIsPresent() {
-        WebElement alertMsg;
-        try{
-            alertMsg = driver.findElement(By.xpath(".//*[@id='loginfrm']/div"));
-
-        }catch (NoSuchElementException e){
-            return false;
-        }
-        if(!alertMsg.isDisplayed()){
-            return false;
-        }
-
-        if(alertMsg.getText().equals("Invalid Email or Password")){
-            return true;
-        }
-
-        return false;
-    }*/
+    
 
 }
