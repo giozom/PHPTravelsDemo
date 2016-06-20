@@ -18,8 +18,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 public class LoginTest {
 
-    ExtentReports report;
-    ExtentTest logger;
+    public static ExtentReports report;
+    public static ExtentTest logger;
 
     public static final String TRAVELS_LOGIN_ENDPOINT = "/login";
     public static final String TRAVELS_LOGOUT_ENDPOINT = "/account/logout";
@@ -45,9 +45,9 @@ public class LoginTest {
 
     @Test
     public void loginToTravels(){
-        report = new ExtentReports("/Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html");
 
-        logger = report.startTest("Verify login is successful");
+        report = new ExtentReports("Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html", true);
+        logger = report.startTest("Start Login to Travels App test");
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
 
@@ -82,9 +82,6 @@ public class LoginTest {
         assertThat(driver.getTitle(), is("My Account"));
 
         logger.log(LogStatus.PASS, "Title verified");
-        report.endTest(logger);
-        report.flush();
-        driver.get("/Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html");
 
     }
 
@@ -101,6 +98,9 @@ public class LoginTest {
     public static void quitDriver(){
         //quit browser
         driver.quit();
+        report.endTest(logger);
+        report.flush();
+
 
     }
 
