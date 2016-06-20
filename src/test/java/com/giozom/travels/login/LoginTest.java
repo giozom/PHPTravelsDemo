@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
+
 
 
 
@@ -46,7 +46,7 @@ public class LoginTest {
     @Test
     public void loginToTravels(){
 
-        report = new ExtentReports("Users/garsenius/github/PHPTravelsDemo/target/extent-reports/TravelsTestReport.html", true);
+        report = new ExtentReports("target/extent-reports/TravelsTestReport.html", true);
         logger = report.startTest("Start Login to Travels App test");
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
@@ -100,6 +100,7 @@ public class LoginTest {
         driver.quit();
         report.endTest(logger);
         report.flush();
+        System.out.println(report);
 
 
     }
