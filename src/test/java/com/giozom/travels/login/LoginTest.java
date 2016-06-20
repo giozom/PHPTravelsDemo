@@ -6,6 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,15 +21,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class LoginTest {
 
     public static final String TRAVELS_LOGIN_ENDPOINT = "/login";
-    public static final String TRAVELS_LOGOUT_ENDPOINT = "/account/login";
+    public static final String TRAVELS_LOGOUT_ENDPOINT = "/account/logout";
 
     public static WebDriver driver;
+
     private TravelsAccount travelsAccount;
 
 
     @BeforeClass
     public static void startDriver(){
         driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+
     }
 
     @Before
@@ -35,7 +42,7 @@ public class LoginTest {
     }
 
     @Test
-    public void loginToTravels() {
+    public void loginToTravels(){
 
         final String TRAVELS_LOGIN = travelsAccount.travels_url + TRAVELS_LOGIN_ENDPOINT;
 
@@ -47,6 +54,7 @@ public class LoginTest {
 
         //goto to login page
         driver.get(TRAVELS_LOGIN);
+        System.out.println(TRAVELS_LOGIN);
 
         //setup page controls
         WebElement txt_username = driver.findElement(username_text_field);
@@ -58,6 +66,7 @@ public class LoginTest {
         txt_password.sendKeys(travelsAccount.userPassword);
         loginButton.click();
 
+        //wait for page to load
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -73,8 +82,9 @@ public class LoginTest {
 
     @After
     public void closeSession() {
-        //logout
-        driver.get(TRAVELS_LOGOUT_ENDPOINT);
+        final String TRAVELS_LOGOUT = travelsAccount.travels_url + TRAVELS_LOGOUT_ENDPOINT;
+        //click logout
+        driver.get(TRAVELS_LOGOUT);
     }
 
 

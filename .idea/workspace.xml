@@ -38,12 +38,10 @@
       <file leaf-file-name="LoginTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/giozom/travels/login/LoginTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="1080">
+              <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#711#712#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,8 +50,8 @@
       <file leaf-file-name="TravelsAccount.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giozom/travels/domain/TravelsAccount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="375">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -139,6 +137,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="PHPTravelsDemo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -566,34 +568,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LoginTest - 2016.06.20 at 11h 30m 32s.xml">
+    <history-entry file="LoginTest - 2016.06.20 at 12h 42m 43s.xml">
       <configuration name="LoginTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest - 2016.06.20 at 11h 37m 12s.xml">
+    <history-entry file="LoginTest - 2016.06.20 at 12h 46m 07s.xml">
       <configuration name="LoginTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest - 2016.06.20 at 12h 09m 37s.xml">
+    <history-entry file="LoginTest - 2016.06.20 at 12h 47m 25s.xml">
       <configuration name="LoginTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 28m 01s.xml">
+    <history-entry file="LoginTest - 2016.06.20 at 12h 51m 50s.xml">
+      <configuration name="LoginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginTest - 2016.06.20 at 12h 53m 53s.xml">
+      <configuration name="LoginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginTest - 2016.06.20 at 12h 54m 39s.xml">
+      <configuration name="LoginTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 12h 31m 52s.xml">
       <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 28m 15s.xml">
+    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 12h 48m 07s.xml">
       <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 30m 25s.xml">
+    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 12h 48m 31s.xml">
       <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 35m 35s.xml">
-      <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 40m 45s.xml">
-      <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 42m 04s.xml">
-      <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 11h 43m 39s.xml">
+    <history-entry file="LoginTest_loginToTravels - 2016.06.20 at 12h 50m 30s.xml">
       <configuration name="LoginTest.loginToTravels" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -657,22 +659,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_92.jdk/Contents/Home/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="500" column="22" selection-start-line="500" selection-start-column="22" selection-end-line="500" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/giozom/travels/domain/TravelsAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="375">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/giozom/travels/login/LoginTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="1080">
+          <caret line="72" column="32" selection-start-line="72" selection-start-column="32" selection-end-line="72" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
           </folding>
         </state>
       </provider>
